@@ -3,7 +3,17 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  
+  # 設定首頁
+  root 'groups#index'
+
+  # resources :groups <- 單層
+  resources :groups do # 巢狀機制
+    resources :posts
+  end
+  # 之後我們對於 Post 的 CRUD 操作都會在 http://localhost:3000/groups/1/posts 下的這一層了。
+
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
